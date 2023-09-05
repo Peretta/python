@@ -6,10 +6,8 @@ maior = vetor[0]
 menor = vetor[0]
 
 for x in vetor:
-    if maior < x:
-        maior = x
-    if menor > x:
-        menor = x
+    if maior < x: maior = x
+    if menor > x: menor = x
     
 print('Lista: ', vetor)
 print('Maior: ', maior)

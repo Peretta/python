@@ -5,8 +5,12 @@ from random import sample
 
 vetor = sample(range(100), 20)
 print(vetor)
+par = []
+impar = []
 for x in vetor:
     if x % 2 == 0:
-        print(f'{x} é par')
+        par.append(x)
     else:
-        print(f'{x} é impar')
+        impar.append(x)
+print(f'VETOR: {vetor}\nIMPARES: {impar}\nPARES: {par}')
+
