@@ -2,22 +2,19 @@
 # Exercícios by Nick Parlante (CodingBat)
 
 # A. near_ten #
-# Seja um n não negativo, retorna True se o número está a distância de pelo menos dois de um múltiplo de dez. Use a função resto da divisão.
+# Seja um n não negativo, retorna True se o número está a distância de
+# pelo menos dois de um múltiplo de dez. Use a função resto da divisão.
 # near_ten(12) -> True
 # near_ten(17) -> False
 # near_ten(19) -> True
 def near_ten(n):
-  if n >= 0:
-    for i in range(3):
-      if (n-i) % 10 == 0 or (n+i) % 10 == 0:
-        return True
-  return False 
+  return str(n)[-1] in "01289"
 
 # B. lone_sum
 # Soma maluca: some os números inteiros a, b, e c
 # Se algum número aparecer repetido ele não conta na soma
 # lone_sum(1, 2, 3) -> 6
-# lone_sum(3, 2, 3) -> 2
+# lone_sum(3, 2, 3) ->2
 # lone_sum(3, 3, 3) -> 0
 def lone_sum(a, b, c):
   if a == b == c: return 0
@@ -25,10 +22,11 @@ def lone_sum(a, b, c):
   elif a == c: return b
   elif b == c: return a
   else: return a+b+c 
-
+    
 # C. luck_sum #
 # Soma três inteiros a, b, c
-# Se aparecer um 13 ele não conta e todos os da sua direita também
+# Se aparecer um 13 ele não conta e todos os da
+#sua direita também
 # lucky_sum(1, 2, 3) -> 6
 # lucky_sum(1, 2, 13) -> 3
 # lucky_sum(1, 13, 3) -> 1
@@ -55,15 +53,25 @@ def double_char(s):
 # count_hi('ABChi hi') -> 2
 # count_hi('hihi') -> 2
 def count_hi(s):
-  return s.count('hi')
-
+  cont = 0
+  for k in range(len(s)):
+    if s[k:k+2] == 'hi':
+      cont += 1
+  return cont
 # F. cat_dog #
 # verifica se o aparece o mesmo número de vezes 'cat' e 'dog'
 # cat_dog('catdog') -> True
 # cat_dog('catcat') -> False
 # cat_dog('1cat1cadodog') -> True
 def cat_dog(s):
-  return s.count('cat') == s.count('dog')
+  cont_dogs = 0
+  cont_cats = 0
+  for k in range(len(s)):
+    if s[k:k+3] == 'cat':
+      cont_cats += 1
+    if s[k:k+3] == 'dog':
+      cont_dogs += 1
+  return cont_cats == cont_dogs
 
 # G. count_code #
 # conta quantas vezes aparece 'code'
@@ -114,7 +122,7 @@ def count_evens(nums):
 def sum13(nums):
   if 13 in nums:
     return sum(nums[:nums.index(13)])
-  return sum(nums)  
+  return sum(nums) 
 
 # K. has22 #
 # Verifica se na lista de números inteiros aparecem dois 2 consecutivos
@@ -122,7 +130,9 @@ def sum13(nums):
 # has22([1, 2, 1, 2]) -> False
 # has22([2, 1, 2]) -> False
 def has22(nums):
-  return
+  for a in range(len(nums) - 1):
+    if nums[a] == nums [a+1]: return True
+  return False
 
 # L. soma_na_lista #
 # Verifica se um número é soma de dois elementos distintos de uma lista
@@ -132,8 +142,12 @@ def has22(nums):
 # soma_na_lista(8, [1, 2, 3, 4]) -> False
 # soma_na_lista(4, [2, 2, 2, 2]) -> False
 # soma_na_lista(4, [2, 2, 1, 3]) -> True
-def soma_na_lista(n, lista):
-  return
+def soma_na_lista(n, lista):  
+  for x in lista:
+    for y in lista:
+      if x != y and x+y == n:
+        return True
+  return False
 
 # M.Difícil: Fila de tijolos sem usar loops #
 # queremos montar uma fila de tijolos de um tamanho denominado meta
@@ -144,7 +158,8 @@ def soma_na_lista(n, lista):
 # fila_tijolos(3, 1, 9) -> False
 # fila_tijolos(3, 2, 10) -> True
 def fila_tijolos(n_peq, n_gra, meta):
-  return 
+  return n_peq >= meta % 5 and n_peq + 5 * n_gra >= meta
+
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
